@@ -1,0 +1,197 @@
+{
+	"info": {
+		"_postman_id": "4ca0444a-5e9a-408c-83c0-bf4320a265ee",
+		"name": "Aula de API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "32450092"
+	},
+	"item": [
+		{
+			"name": "Listar todos os objetos",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code é 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Tempo de resposta menor que 1000ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}",
+					"host": [
+						"{{url}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Consultar pelo ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}?id=ff8081818d0c18cf018d230586d719de",
+					"host": [
+						"{{url}}"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "ff8081818d0c18cf018d230586d719de"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Simples Objetos",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/7",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"7"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Adicionar Objetos",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n   \"name\": \"Fralda\",\r\n   \"data\": {\r\n      \"tamanho\": \"1\",\r\n      \"preço\": 19.99\r\n   }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}",
+					"host": [
+						"{{url}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "   {\r\n        \"name\": \"Fralda\",\r\n        \"data\": {\r\n            \"tamanho\": \"6\",\r\n            \"preço\": 14.99\r\n        }\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/ff8081818d0c18cf018d230586d719de",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"ff8081818d0c18cf018d230586d719de"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Partial Update",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "   {\r\n      \"name\": \"Bata do Levi\"\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/ff8081818d0c18cf018d230586d719de",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"ff8081818d0c18cf018d230586d719de"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/ff8081818d0c18cf018d230586d719de",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"ff8081818d0c18cf018d230586d719de"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "url",
+			"value": "https://api.restful-api.dev/objects",
+			"type": "string"
+		}
+	]
+}
